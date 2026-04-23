@@ -260,8 +260,9 @@ if __name__ == '__main__':
     print("\nPress Ctrl+C to stop the server\n")
     
     # Run Flask app
+    port = int(os.environ.get("PORT", API_PORT))
     app.run(
-        host=API_HOST,
-        port=API_PORT,
+        host="0.0.0.0",
+        port=port,
         debug=DEBUG_MODE
     )
