@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Status &amp; Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c7d23",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#131f13",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        .status-pulse-fixed {
+            position: relative;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-[#121712] dark:text-white">
+<header class="sticky top-0 z-50 bg-white dark:bg-[#1a2a1a] border-b border-[#dce4dd] dark:border-[#2d3d2d] px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#121712] dark:text-white cursor-pointer">arrow_back_ios</span>
+<h1 class="text-lg font-bold tracking-tight">System Status &amp; Reports</h1>
+</div>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-primary">sync</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<section class="mt-4">
+<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 px-4 mb-2">Hardware Status</h3>
+<div class="grid grid-cols-1 gap-3 px-4">
+<div class="flex items-center justify-between p-4 bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#dce4dd] dark:border-[#2d3d2d] shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">photo_camera</span>
+<span class="font-bold text-base">Camera AI Unit</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-primary font-bold text-sm uppercase">Connected</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#dce4dd] dark:border-[#2d3d2d] shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">water_drop</span>
+<span class="font-bold text-base text-[#121712] dark:text-white">Biological Sprinkler</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-gray-400"></span>
+<span class="text-gray-500 font-bold text-sm uppercase">OFF</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#dce4dd] dark:border-[#2d3d2d] shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+<span class="font-bold text-base">Operation Mode</span>
+</div>
+<span class="bg-primary px-3 py-1 rounded-full text-white text-xs font-bold tracking-widest">AUTO</span>
+</div>
+</div>
+</section>
+<section class="mt-8">
+<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 px-4 mb-2">System Health</h3>
+<div class="flex flex-wrap gap-4 px-4">
+<div class="flex min-w-[140px] flex-1 flex-col gap-2 rounded-xl p-5 bg-white dark:bg-[#1a2a1a] border border-[#dce4dd] dark:border-[#2d3d2d]">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase">Battery Level</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold leading-none">88%</p>
+<span class="material-symbols-outlined text-primary text-xl">battery_very_low</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full mt-1">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-2 rounded-xl p-5 bg-white dark:bg-[#1a2a1a] border border-[#dce4dd] dark:border-[#2d3d2d]">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase">Fluid Level</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold leading-none text-orange-600">42%</p>
+<span class="material-symbols-outlined text-orange-600 text-xl">opacity</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full mt-1">
+<div class="bg-orange-600 h-1.5 rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-8">
+<div class="flex items-center justify-between px-4 mb-2">
+<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Last Action Log</h3>
+<span class="text-xs text-primary font-bold cursor-pointer">View All</span>
+</div>
+<div class="mx-4 bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#dce4dd] dark:border-[#2d3d2d] overflow-hidden">
+<div class="p-4 border-b border-[#f0f4f0] dark:border-[#2d3d2d] flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Detected: Downy Mildew</span>
+<span class="text-[10px] text-gray-400 font-medium uppercase">12:45 PM</span>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">Zone B - Sector 4. Confidence: 94%</p>
+</div>
+<div class="p-4 border-b border-[#f0f4f0] dark:border-[#2d3d2d] bg-primary/5 flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm text-primary">Spraying Initiated</span>
+<span class="text-[10px] text-gray-400 font-medium uppercase">12:46 PM</span>
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">Targeting Nozzle 4. Flow rate optimized.</p>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Spraying Completed</span>
+<span class="text-[10px] text-gray-400 font-medium uppercase">12:47 PM</span>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">Total volume applied: 250ml.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="fixed bottom-0 w-full bg-white/80 dark:bg-[#131f13]/80 backdrop-blur-md border-t border-[#dce4dd] dark:border-[#2d3d2d] py-4 px-6">
+<div class="flex flex-col items-center justify-center gap-1">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<p class="text-[11px] font-bold text-gray-600 dark:text-gray-300 tracking-wide uppercase">Designed for Sustainable Agriculture</p>
+</div>
+<p class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">Sustainable Development Goal 2 - Zero Hunger</p>
+</div>
+</footer>
+
+</body></html>

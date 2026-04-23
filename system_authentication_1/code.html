@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Agriculture System Authentication</title>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Space Grotesk -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1c7d23",
+              "background-light": "#f6f8f6",
+              "background-dark": "#131f13",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<div class="relative flex h-full min-h-screen w-full flex-col bg-white dark:bg-background-dark group/design-root overflow-x-hidden max-w-[480px] mx-auto shadow-2xl">
+<!-- Top App Bar -->
+<div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-[#121712] dark:text-white flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#121712] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">System Authentication</h2>
+</div>
+<!-- Header Image / Project Logo Section -->
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-3 px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat bg-contain flex flex-col justify-end overflow-hidden bg-white dark:bg-background-dark @[480px]:rounded-lg min-h-52" data-alt="Minimalist green leaf and tech circuit logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCs6nCR4ICwY6xwh0EUQPNssQGfdPjvG5ZfLokGN5iuOdptY71iKgjL3KkjWetDjPs_LTDqWc0Q3OiD462N6eIm40EcuxZifcNL1R8zl73gEmAoHlQURRmpnIUYiwxnuHE_jkcntWE_iQKBII4cG3XOcpcTr7QTfC75yR2TXKtG5nQ3QulEDfbRDGk2pJruCPx9KkM0IOCxN6jPBlSZmsZuqqwe9XQ48Uzay3P5Wjlg0MTwHnDUB4eTnJj2t0hPnZ91jMlx-1J8jnOs");'>
+</div>
+</div>
+</div>
+<!-- Headline Text -->
+<div class="flex flex-col items-center">
+<h1 class="text-[#121712] dark:text-white tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-1 pt-6">Welcome Back</h1>
+<p class="text-[#668568] dark:text-gray-400 text-sm font-medium px-4 text-center">Access your Smart Agriculture Dashboard</p>
+</div>
+<div class="h-4"></div>
+<!-- Login Form Fields -->
+<div class="flex flex-col gap-1">
+<!-- Username/Email Field -->
+<div class="flex flex-wrap items-end gap-4 px-4 py-2">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-[#121712] dark:text-white text-base font-medium leading-normal pb-2">Username or Email</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121712] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce4dd] dark:border-gray-700 bg-white dark:bg-zinc-900 focus:border-primary h-14 placeholder:text-[#668568] p-[15px] text-base font-normal leading-normal" placeholder="Enter your email" type="email"/>
+</label>
+</div>
+<!-- Password Field -->
+<div class="flex flex-wrap items-end gap-4 px-4 py-2">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-[#121712] dark:text-white text-base font-medium leading-normal pb-2">Password</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121712] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce4dd] dark:border-gray-700 bg-white dark:bg-zinc-900 focus:border-primary h-14 placeholder:text-[#668568] p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="Enter your password" type="password"/>
+<div class="text-[#668568] flex border border-[#dce4dd] dark:border-gray-700 bg-white dark:bg-zinc-900 items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+<span class="material-symbols-outlined cursor-pointer">visibility</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end px-4 pt-1">
+<a class="text-primary text-sm font-semibold hover:underline" href="#">Forgot Password?</a>
+</div>
+<!-- Action Button -->
+<div class="px-4 py-6 mt-4">
+<button class="w-full h-14 bg-primary text-white text-lg font-bold rounded-xl shadow-lg shadow-primary/20 hover:brightness-110 active:scale-[0.98] transition-all">
+                Login
+            </button>
+</div>
+<!-- Social/Alternative Login (Optional addition for modern look) -->
+<div class="flex items-center px-8 gap-4 py-2">
+<div class="h-px flex-1 bg-gray-200 dark:bg-gray-800"></div>
+<span class="text-xs text-gray-400 font-medium uppercase tracking-widest">Or Secure Entry</span>
+<div class="h-px flex-1 bg-gray-200 dark:bg-gray-800"></div>
+</div>
+<div class="flex justify-center gap-6 py-4">
+<div class="size-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-300">fingerprint</span>
+</div>
+<div class="size-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-300">face</span>
+</div>
+</div>
+<!-- Spacer for footer -->
+<div class="flex-1"></div>
+<!-- Footer Section -->
+<footer class="p-6 text-center border-t border-gray-100 dark:border-gray-800">
+<p class="text-[#121712] dark:text-gray-300 text-sm font-bold leading-tight">
+                Smart Agriculture using AI &amp; Image Processing
+            </p>
+<p class="text-[#668568] dark:text-primary/70 text-xs font-medium mt-1 italic">
+                In support of SDG 2 - Zero Hunger
+            </p>
+</footer>
+<!-- Safety area for iOS notch/home bar -->
+<div class="h-8 bg-white dark:bg-background-dark"></div>
+</div>
+</body></html>

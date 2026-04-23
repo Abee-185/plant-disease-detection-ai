@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Biological Sprinkler</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Dashboard Specific Styles */
+        .dashboard {
+            min-height: 100vh;
+            padding-bottom: var(--spacing-xl);
+        }
+
+        /* Header */
+        .header {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-text p {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin: 0;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+        }
+
+        .btn-logout {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: var(--spacing-xl);
+        }
+
+        /* Control Buttons Container */
+        .control-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-md);
+        }
+
+        /* Mode Toggle */
+        .mode-selector {
+            display: flex;
+            gap: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-md) 0;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--gray-400);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-weight: 600;
+            font-family: var(--font-primary);
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Analysis Results */
+        .analysis-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+        }
+
+        .result-label {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .result-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* System Status Grid */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-md);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-text {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .sdg-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .header-user {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .mode-selector {
+                flex-direction: column;
+            }
+
+            .control-buttons {
+                flex-direction: column;
+            }
+
+            .control-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-title">
+                        <div class="header-logo">🌱</div>
+                        <div class="header-text">
+                            <h1>Biological Sprinkler</h1>
+                            <p>Smart Agriculture Dashboard</p>
+                        </div>
+                    </div>
+                    <div class="header-user">
+                        <div class="user-info">
+                            <div class="user-name" id="userName">Admin User</div>
+                            <div class="user-role">System Operator</div>
+                        </div>
+                        <button class="btn btn-secondary btn-logout" id="logoutBtn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Image Upload Section -->
+                <div class="card full-width animate-fadeIn">
+                    <h2 class="card-title">📸 Plant Leaf Analysis</h2>
+
+                    <div class="image-preview-container" id="imagePreviewContainer">
+                        <img src="" alt="Uploaded leaf" class="image-preview" id="imagePreview">
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <div class="upload-icon">🖼️</div>
+                            <p>Upload or capture a plant leaf image</p>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">Supported: JPG, PNG</p>
+                        </div>
+                    </div>
+
+                    <div class="control-buttons">
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        <button class="btn btn-primary" id="uploadBtn">📤 Upload Image</button>
+                        <button class="btn btn-secondary" id="captureBtn">📷 Capture Image</button>
+                        <button class="btn btn-success" id="analyzeBtn" style="display: none;">🔍 Analyze
+                            Disease</button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Disease Analysis Section -->
+                    <div class="card animate-fadeIn" style="animation-delay: 0.1s;">
+                        <h2 class="card-title">🔬 Disease Analysis</h2>
+                        <div id="analysisSection" style="display: none;">
+                            <div class="analysis-results">
+                                <div class="result-item">
+                                    <div class="result-label">Crop Type</div>
+                                    <div class="result-value" id="cropType">Tomato</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Disease Name</div>
+                                    <div class="result-value" id="diseaseName">Early Blight</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Health Status</div>
+                                    <div id="healthBadge">
+                                        <span class="badge badge-diseased">🦠 Diseased</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="noAnalysis"
+                            style="text-align: center; padding: var(--spacing-lg); color: var(--gray-500);">
+                            <p>Upload an image to start analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Severity Indicator -->
+                    <div class="card animate-fadeIn" style="animation-delay: 0.2s;">
+                        <h2 class="card-title">📊 Disease Severity</h2>
+                        <div class="severity-circle-container">
+                            <div class="circular-progress" id="severityCircle">
+                                <svg viewBox="0 0 200 200">
+                                    <circle class="circle-bg" cx="100" cy="100" r="90"></circle>
+                                    <circle class="circle-progress" cx="100" cy="100" r="90" id="progressCircle">
+                                    </circle>
+                                </svg>
+                                <div class="circle-text">
+                                    <span class="circle-percentage" id="severityPercentage">0%</span>
+                                    <span class="circle-label">Severity</span>
+                                </div>
+                            </div>
+                            <p
+                                style="text-align: center; color: var(--gray-400); font-size: 0.875rem; margin-top: var(--spacing-sm);">
+                                <span id="severityLabel">No data available</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sprinkler Control Section -->
+                <div class="card full-width animate-fadeIn" style="animation-delay: 0.3s;">
+                    <h2 class="card-title">💧 Sprinkler Control</h2>
+
+                    <div class="mode-selector">
+                        <button class="mode-btn active" data-mode="auto">🤖 AUTO Mode</button>
+                        <button class="mode-btn" data-mode="manual">🎮 MANUAL Mode</button>
+                    </div>
+
+                    <!-- Auto Mode Content -->
+                    <div id="autoModeContent">
+                        <p style="color: var(--gray-300); margin: var(--spacing-md) 0;">
+                            ✓ System sprays automatically based on disease severity
+                        </p>
+                        <div class="analysis-results">
+                            <div class="result-item">
+                                <div class="result-label">Spray Duration</div>
+                                <div class="result-value" id="sprayDuration">5 minutes</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Recommended Fertilizer</div>
+                                <div class="result-value" id="autoFertilizer">NPK 20-20-20</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manual Mode Content -->
+                    <div id="manualModeContent" style="display: none;">
+                        <p style="color: var(--gray-300); margin: var(--spacing-md) 0;">
+                            Manual control enabled. Use buttons below to control the sprinkler.
+                        </p>
+                        <div class="control-buttons">
+                            <button class="btn btn-success" id="sprinklerOnBtn">✅ Sprinkler ON</button>
+                            <button class="btn btn-danger" id="sprinklerOffBtn">❌ Sprinkler OFF</button>
+                            <button class="btn btn-primary" id="applySprayBtn">💊 Apply Recommended Spray</button>
+                        </div>
+                        <div id="manualStatus"
+                            style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); display: none;">
+                            <p style="color: var(--primary-light); margin: 0;"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fertilizer Recommendation -->
+                <div class="card animate-fadeIn" style="animation-delay: 0.4s;">
+                    <h2 class="card-title">💊 Fertilizer Recommendation</h2>
+                    <div id="fertilizerSection" style="display: none;">
+                        <div class="result-item">
+                            <div class="result-label">Recommended Product</div>
+                            <div class="result-value" id="fertilizerName">Copper Fungicide</div>
+                        </div>
+                        <div class="result-item" style="margin-top: var(--spacing-md);">
+                            <div class="result-label">Suggested Quantity</div>
+                            <div class="result-value" id="fertilizerQuantity">Medium (2-3 kg/acre)</div>
+                        </div>
+                        <div
+                            style="margin-top: var(--spacing-md); padding: var(--spacing-sm); background: rgba(245, 158, 11, 0.1); border: 1px solid var(--warning-yellow); border-radius: var(--radius-md);">
+                            <p style="font-size: 0.875rem; color: var(--warning-yellow); margin: 0;">
+                                ⚠️ <strong>Safety Note:</strong> Always wear protective equipment when handling
+                                fertilizers and pesticides.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="noFertilizer"
+                        style="text-align: center; padding: var(--spacing-lg); color: var(--gray-500);">
+                        <p>Analyze a plant to get recommendations</p>
+                    </div>
+                </div>
+
+                <!-- System Status -->
+                <div class="card animate-fadeIn" style="animation-delay: 0.5s;">
+                    <h2 class="card-title">⚡ System Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span>Camera</span>
+                            <span class="status-indicator">
+                                <span class="status-dot status-connected"></span>
+                                <span>Connected</span>
+                            </span>
+                        </div>
+                        <div class="status-item">
+                            <span>Sprinkler</span>
+                            <span class="status-indicator" id="sprinklerStatus">
+                                <span class="status-dot status-disconnected"></span>
+                                <span>OFF</span>
+                            </span>
+                        </div>
+                        <div class="status-item">
+                            <span>Mode</span>
+                            <span id="currentMode" style="color: var(--primary-light); font-weight: 600;">AUTO</span>
+                        </div>
+                        <div class="status-item">
+                            <span>Last Action</span>
+                            <span id="lastAction" style="font-size: 0.875rem; color: var(--gray-400);">System
+                                started</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Reports / History -->
+                <div class="card full-width animate-fadeIn" style="animation-delay: 0.6s;">
+                    <h2 class="card-title">📊 Analysis Reports & History</h2>
+
+                    <div
+                        style="margin-bottom: var(--spacing-md); display: flex; justify-content: space-between; align-items: center;">
+                        <p style="color: var(--gray-400); font-size: 0.875rem; margin: 0;">
+                            Recent analysis history from database
+                        </p>
+                        <button class="btn btn-secondary btn-sm" id="refreshHistoryBtn"
+                            style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                            🔄 Refresh
+                        </button>
+                    </div>
+
+                    <div id="historyTableContainer" style="overflow-x: auto;">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Crop</th>
+                                    <th>Disease</th>
+                                    <th>Severity</th>
+                                    <th>Confidence</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody">
+                                <tr>
+                                    <td colspan="6"
+                                        style="text-align: center; padding: var(--spacing-lg); color: var(--gray-500);">
+                                        No analysis history yet. Upload and analyze an image to see results here.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="historyStats" style="margin-top: var(--spacing-md); display: none;">
+                        <div class="analysis-results">
+                            <div class="result-item">
+                                <div class="result-label">Total Analyses</div>
+                                <div class="result-value" id="totalAnalyses">0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Healthy Count</div>
+                                <div class="result-value" style="color: var(--success-green);" id="healthyCount">0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Diseased Count</div>
+                                <div class="result-value" style="color: var(--danger-red);" id="diseasedCount">0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Avg Severity</div>
+                                <div class="result-value" id="avgSeverity">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">Smart Agriculture using AI & Image Processing</p>
+                <div class="sdg-info">
+                    <span>🎯</span>
+                    <span>SDG 2 - Zero Hunger | Sustainable Development Goals</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

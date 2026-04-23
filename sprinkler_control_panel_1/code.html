@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sprinkler Control Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c7d23",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#131f13",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="max-w-[480px] mx-auto min-h-screen flex flex-col bg-white dark:bg-background-dark shadow-xl">
+<!-- TopAppBar -->
+<header class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-gray-100 dark:border-gray-800">
+<div class="text-[#121712] dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#121712] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">Sprinkler Control</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#121712] dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-8">
+<!-- Mode Selection: SegmentedButtons -->
+<div class="flex px-4 py-6">
+<div class="flex h-12 flex-1 items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-zinc-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal transition-all">
+<span class="truncate">AUTO</span>
+<input checked="" class="invisible w-0" name="mode-toggle" type="radio" value="AUTO"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-zinc-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal transition-all">
+<span class="truncate">MANUAL</span>
+<input class="invisible w-0" name="mode-toggle" type="radio" value="MANUAL"/>
+</label>
+</div>
+</div>
+<!-- AUTO MODE SECTION -->
+<div class="px-4 space-y-4">
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-4">
+<h3 class="text-[#121712] dark:text-white tracking-light text-xl font-bold leading-tight text-center pb-2 font-display">System Status: Active</h3>
+<p class="text-gray-600 dark:text-gray-300 text-sm font-normal leading-relaxed text-center px-2">
+                        System will spray automatically based on AI analysis of plant health and moisture levels.
+                    </p>
+<!-- DescriptionList -->
+<div class="mt-4 pt-4 border-t border-primary/10">
+<div class="flex justify-between gap-x-6 py-2">
+<p class="text-primary font-medium text-sm leading-normal">Duration</p>
+<p class="text-[#121712] dark:text-white text-sm font-bold leading-normal text-right">15 mins</p>
+</div>
+<div class="flex justify-between gap-x-6 py-2">
+<p class="text-primary font-medium text-sm leading-normal">Current Fertilizer</p>
+<p class="text-[#121712] dark:text-white text-sm font-bold leading-normal text-right">Copper Fungicide</p>
+</div>
+</div>
+</div>
+</div>
+<!-- MANUAL CONTROLS -->
+<div class="mt-8 px-4">
+<h4 class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-wider mb-4 px-1">Manual Override Controls</h4>
+<div class="grid grid-cols-2 gap-3 mb-4">
+<button class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-primary text-white font-bold transition-active active:scale-95">
+<span class="material-symbols-outlined text-3xl">water_drop</span>
+<span>Sprinkler ON</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-red-500 text-white font-bold transition-active active:scale-95">
+<span class="material-symbols-outlined text-3xl">block</span>
+<span>Sprinkler OFF</span>
+</button>
+</div>
+<button class="w-full flex items-center justify-center gap-3 h-14 rounded-xl bg-blue-600 text-white font-bold transition-active active:scale-95">
+<span class="material-symbols-outlined">psychology</span>
+<span>Apply Recommended Spray</span>
+</button>
+</div>
+<!-- Fertilizer Recommendation Card -->
+<div class="mt-8 px-4">
+<div class="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-5 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-1">AI Recommendation</span>
+<h3 class="text-[#121712] dark:text-white text-lg font-bold font-display leading-tight">Copper Fungicide</h3>
+</div>
+<span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-black px-2 py-1 rounded-full uppercase">Medium Dose</span>
+</div>
+<div class="flex items-center gap-3 mb-4 bg-gray-50 dark:bg-zinc-800/50 p-3 rounded-lg">
+<span class="material-symbols-outlined text-amber-500">warning</span>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-normal">
+                            Targeting early-stage fungal detection in Sector B4. 
+                        </p>
+</div>
+<div class="space-y-2 border-t border-gray-100 dark:border-zinc-800 pt-4">
+<p class="text-[11px] text-gray-400 dark:text-gray-500 font-bold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">info</span> Safety Notes
+                        </p>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 list-disc pl-4">
+<li>Apply during low-wind conditions.</li>
+<li>Wear protective gear (Mask &amp; Gloves).</li>
+<li>Keep personnel clear for 2 hours post-spray.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- System Health -->
+<div class="mt-8 px-4 flex justify-between items-center text-gray-400 dark:text-gray-600">
+<div class="flex gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="text-[10px] font-bold">94%</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thermostat</span>
+<span class="text-[10px] font-bold">24°C</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-[10px] font-bold">Pressure: 45 PSI</span>
+<span class="size-1.5 bg-primary rounded-full"></span>
+</div>
+</div>
+</main>
+<!-- Tab Bar Placeholder (iOS Style) -->
+<nav class="h-16 border-t border-gray-100 dark:border-gray-800 flex items-center justify-around bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+<span class="material-symbols-outlined text-gray-400">monitoring</span>
+<span class="material-symbols-outlined text-gray-400">agriculture</span>
+<span class="material-symbols-outlined text-gray-400">notifications</span>
+</nav>
+</div>
+</body></html>

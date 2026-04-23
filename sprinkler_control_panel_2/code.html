@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biological Sprinkler Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2E7D32",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#0d140d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#121712]">
+<div class="max-w-[480px] mx-auto min-h-screen flex flex-col bg-white dark:bg-background-dark shadow-2xl relative">
+<header class="flex items-center bg-white/80 dark:bg-background-dark/80 ios-blur p-4 pb-2 justify-between sticky top-0 z-20 border-b border-gray-100 dark:border-gray-800">
+<div class="text-[#121712] dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer active:opacity-50">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#121712] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">Biological Sprinkler Control</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-12 bg-transparent text-[#121712] dark:text-white active:opacity-50">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-8">
+<div class="flex px-4 py-6">
+<div class="flex h-12 flex-1 items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-zinc-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal transition-all">
+<span class="truncate">AUTO</span>
+<input checked="" class="invisible w-0" name="mode-toggle" type="radio" value="AUTO"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-zinc-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal transition-all">
+<span class="truncate">MANUAL</span>
+<input class="invisible w-0" name="mode-toggle" type="radio" value="MANUAL"/>
+</label>
+</div>
+</div>
+<div class="px-4 space-y-4">
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-primary">eco</span>
+</div>
+<h3 class="text-[#121712] dark:text-white tracking-tight text-xl font-bold leading-tight text-center pb-2 font-display">System Status: Active</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-relaxed text-center px-4">
+                        Biological Sprinkler will spray automatically based on AI analysis of plant health and moisture levels.
+                    </p>
+<div class="mt-6 pt-4 border-t border-primary/10">
+<div class="flex justify-between items-center py-2.5">
+<p class="text-primary font-semibold text-sm">Duration</p>
+<p class="text-[#121712] dark:text-white text-sm font-bold">15 mins</p>
+</div>
+<div class="flex justify-between items-center py-2.5">
+<p class="text-primary font-semibold text-sm">Bio-Agent Type</p>
+<p class="text-[#121712] dark:text-white text-sm font-bold">Copper Fungicide</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 px-4">
+<h4 class="text-gray-400 dark:text-gray-500 text-[11px] font-black uppercase tracking-[0.1em] mb-4 px-1">Manual Override Controls</h4>
+<div class="grid grid-cols-2 gap-3 mb-4">
+<button class="flex flex-col items-center justify-center gap-2 h-28 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform duration-75">
+<span class="material-symbols-outlined text-3xl">water_drop</span>
+<span class="text-xs uppercase tracking-wider">Bio Sprinkler ON</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-28 rounded-2xl bg-red-600 text-white font-bold shadow-lg shadow-red-500/20 active:scale-95 transition-transform duration-75">
+<span class="material-symbols-outlined text-3xl">block</span>
+<span class="text-xs uppercase tracking-wider">Bio Sprinkler OFF</span>
+</button>
+</div>
+<button class="w-full flex items-center justify-center gap-3 h-14 rounded-2xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-transform duration-75">
+<span class="material-symbols-outlined">psychology</span>
+<span>Apply Recommended Spray</span>
+</button>
+</div>
+<div class="mt-8 px-4">
+<div class="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-5 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.15em] mb-1">AI Recommendation</span>
+<h3 class="text-[#121712] dark:text-white text-lg font-bold font-display leading-tight">Copper Fungicide</h3>
+</div>
+<span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Medium Dose</span>
+</div>
+<div class="flex items-center gap-3 mb-4 bg-gray-50 dark:bg-zinc-800/50 p-3 rounded-xl">
+<span class="material-symbols-outlined text-amber-500">warning</span>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-normal">
+                            Targeting early-stage fungal detection in Sector B4. 
+                        </p>
+</div>
+<div class="space-y-3 border-t border-gray-100 dark:border-zinc-800 pt-4">
+<p class="text-[11px] text-gray-400 dark:text-gray-500 font-bold uppercase flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">info</span> Safety Notes
+                        </p>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2">
+<li class="flex items-start gap-2">
+<span class="size-1 bg-primary/40 rounded-full mt-1.5 shrink-0"></span>
+                                Apply during low-wind conditions.
+                            </li>
+<li class="flex items-start gap-2">
+<span class="size-1 bg-primary/40 rounded-full mt-1.5 shrink-0"></span>
+                                Wear protective gear (Mask &amp; Gloves).
+                            </li>
+<li class="flex items-start gap-2">
+<span class="size-1 bg-primary/40 rounded-full mt-1.5 shrink-0"></span>
+                                Keep personnel clear for 2 hours post-spray.
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-8 px-6 flex justify-between items-center text-gray-400 dark:text-gray-500 border-t border-gray-50 dark:border-zinc-900 pt-6">
+<div class="flex gap-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">wifi</span>
+<span class="text-[11px] font-black">94%</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">thermostat</span>
+<span class="text-[11px] font-black">24°C</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1 rounded-full">
+<span class="text-[10px] font-black text-primary uppercase">Pressure: 45 PSI</span>
+<span class="size-2 bg-primary rounded-full animate-pulse"></span>
+</div>
+</div>
+</main>
+<nav class="h-20 border-t border-gray-100 dark:border-gray-800 flex items-center justify-around bg-white/90 dark:bg-background-dark/90 ios-blur px-6 pb-4">
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[28px]">dashboard</span>
+<span class="text-[10px] font-bold">Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400 active:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">monitoring</span>
+<span class="text-[10px] font-bold">Analytics</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400 active:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">agriculture</span>
+<span class="text-[10px] font-bold">Plants</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400 active:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">notifications</span>
+<span class="text-[10px] font-bold">Alerts</span>
+</div>
+</nav>
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-200 dark:bg-zinc-800 rounded-full"></div>
+</div>
+
+</body></html>
